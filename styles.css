@@ -11,11 +11,6 @@ body, html {
     scroll-behavior: smooth;
 }
 
-body {
-    display: flex;
-    align-items: center;
-}
-
 *:focus {
     outline: none;
 }
@@ -25,8 +20,8 @@ body {
 }
 
 #main {
-    max-width: 620px;
-    width: 620px;
+    max-width: 420px;
+    width: 420px;
     margin:auto;
     position: relative;
 }
@@ -34,17 +29,19 @@ body {
 .content {
     width: auto;
     color: #222c3c;
-    padding: 60px;
+    padding: 20px;
     background-color: #fff;
     border-radius: 15px;
-    min-height: 200px;
+    min-height: 50px;
     position: relative;
     margin: 10px;
     -webkit-box-shadow: 0px 9px 15px 5px #D5D6DF; 
-box-shadow: 0px 9px 15px 5px #D5D6DF;
+    box-shadow: 0px 9px 15px 5px #D5D6DF;
+    display: none;
 }
 
 #arrow {
+    display: none;
     position: absolute; 
     background-color: white; 
     width: 70px; 
@@ -62,9 +59,10 @@ box-shadow: 0px 9px 15px 5px #D5D6DF;
     align-items: center;
     margin-bottom: 30px;
     padding: 10px;
-    border-radius: 70px;
+    border-radius: 200px;
     padding-right: 20px;
     transition: all .3s ease;
+    position: relative;
   }
 
 .user:hover {
@@ -73,6 +71,7 @@ box-shadow: 0px 9px 15px 5px #D5D6DF;
     cursor: pointer;
 
 }
+
 .user div {
     flex: 1;
 }
@@ -81,8 +80,10 @@ box-shadow: 0px 9px 15px 5px #D5D6DF;
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 120px;
+    max-width: 80px;
     padding-right: 20px;
+    padding-left: 10px;
+    position: relative;
 }
 
 .user div:first-child img {
@@ -91,10 +92,36 @@ box-shadow: 0px 9px 15px 5px #D5D6DF;
     float: left;
 }
 
+.user > div:last-of-type {
+    width: 90%;
+}
+
+.user div:last-of-type div {
+    display: none;
+    position: absolute;
+    top:26px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: red;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23ffffff' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cline x1='18' y1='6' x2='6' y2='18' /%3E%3Cline x1='6' y1='6' x2='18' y2='18' /%3E%3C/svg%3E");
+    background-position: center;
+}
+
+.user:hover div:last-child div {
+    display: block;
+}
+
+.user:hover div:last-child div:hover svg {
+    stroke:red
+}
+
 h2 {
     padding-top: 0px;
     margin: 0px;
-    font-size: 22px;
+    font-size: 16px;
+    max-width: 92%;
 }
 
 h2 span {
@@ -105,15 +132,16 @@ p {
     padding: 0px;
     margin: 0px;
     color: #949697;
+    font-size: 15px;
 }
 
 button {
     margin: auto;
     display: block;
     border-radius: 50px;
-    padding: 20px 45px;
+    padding: 10px 20px;
     background-color: #edf3fc;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 600;
     border: 0px;
     cursor: pointer;
@@ -134,19 +162,38 @@ button:hover {
     border-radius: 50%;
     -webkit-box-shadow: 0px 10px 15px -10px rgba(87,141,227,0.78); 
     box-shadow: 0px 10px 15px -10px rgba(87,141,227,0.78);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-activity' width='44' height='44' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23ffffff' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M3 12h4l3 8l4 -16l3 8h4' /%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23ffffff' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6' /%3E%3Cpath d='M9 17v1a3 3 0 0 0 6 0v-1' /%3E%3Cpath d='M21 6.727a11.05 11.05 0 0 0 -2.794 -3.727' /%3E%3Cpath d='M3 6.727a11.05 11.05 0 0 1 2.792 -3.727' /%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     transition: all .3s ease;
+    animation: dingding 0.9s linear infinite; 
 }
 
 .activity:hover {
     background-color: #3462b7;
     cursor: pointer;
+    animation: none;
 }
 
 @media only screen and (max-width: 490px) {
     .content {
         padding: 10px;
     }
+}
+
+.clean {
+    display: none;
+    margin-top: 30px;
+    text-align: center;
+    color: #3462b7;
+    padding:10px
+}
+
+@keyframes dingding {
+    0% { transform: skewY(-15deg); }
+    5% { transform: skewY(15deg); }
+    10% { transform: skewY(-15deg); }
+    15% { transform: skewY(15deg); }
+    20% { transform: skewY(0deg); }
+    100% { transform: skewY(0deg); }
 }

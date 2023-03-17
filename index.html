@@ -12,47 +12,122 @@
         <link href="styles.css" rel="stylesheet" media="all" type="text/css">
     </head>
     <body>
+        <br>
         <div id="main">
             <div class="activity"></div>
-            <br><br>
+            <br>
             <div id="arrow"></div>
-            <div class="content">
-                <div class="user">
-                    <div>
-                        <img src="https://pbs.twimg.com/profile_images/1607804678472859650/1r9CwGYz_400x400.jpg" width="100" alt="">
-                    </div>
-                    <div>
-                      <h2>Cora Jenkins <span>followed you.</span></h2>
-                      <p>2 hours ago</p>
-                    </div>
-                </div>
-                <div class="user">
-                    <div>
-                        <img src="https://pbs.twimg.com/profile_images/1558156268841455618/YRQXaP3k_400x400.jpg" width="100" alt="">
-                    </div>
-                    <div>
-                      <h2>Emily Ross <span>added a comment.</span></h2>
-                      <p>2 hours ago</p>
+            <div class="content hidden">
+                <div class="clean">You have no new notifications!</div>
+                <div class="user" style="display: none;">    
+                    <div>        
+                        <img src="https://pbs.twimg.com/profile_images/1633847644966772737/m8yU9m0A_400x400.jpg" width="70" alt="">    
+                    </div>    
+                    <div>        
+                        <h2>iCodeThis.com <span>liked your code</span></h2>        
+                        <p style="color:#5eb806">just now</p>        
+                        <div class="close"></div>    
                     </div>
                 </div>
                 <div class="user">
                     <div>
-                        <img src="https://pbs.twimg.com/profile_images/1626691866300239875/xAvTU3OE_400x400.jpg" width="100" alt="">
+                        <img src="https://pbs.twimg.com/profile_images/1607804678472859650/1r9CwGYz_400x400.jpg" width="70" alt="">
                     </div>
                     <div>
-                      <h2>Ora Larson <span>liked your comment</span></h2>
-                      <p>2 hours ago</p>
+                        <h2>Cora Jenkins <span>followed you.</span></h2>
+                        <p>2 hours ago</p>
+                        <div class="close"></div>
                     </div>
                 </div>
                 <div class="user">
                     <div>
-                        <img src="https://pbs.twimg.com/profile_images/1619785307955552256/oRT-lbNW_400x400.jpg" width="100" alt="">
+                        <img src="https://pbs.twimg.com/profile_images/1558156268841455618/YRQXaP3k_400x400.jpg" width="70" alt="">
+                    </div>
+                    <div>
+                        <h2>Emily Ross <span>added a comment.</span></h2>
+                        <p>2 hours ago</p>
+                        <div class="close"></div>
+                    </div>
+                </div>
+                <div class="user">
+                    <div>
+                        <img src="https://pbs.twimg.com/profile_images/1626691866300239875/xAvTU3OE_400x400.jpg" width="70" alt="">
+                    </div>
+                    <div>
+                        <h2>Ora Larson <span>liked your comment</span></h2>
+                        <p>2 hours ago</p>
+                        <div class="close"></div>
+                    </div>
+                </div>
+                <div class="user">
+                    <div>
+                        <img src="https://pbs.twimg.com/profile_images/1619785307955552256/oRT-lbNW_400x400.jpg" width="70" alt="">
                     </div>
                     <div>
                       <h2>Jeanette Norris <span>followed you.</span></h2>
                       <p>2 hours ago</p>
+                      <div class="close"></div>
                     </div>
                 </div>
+                <script>
+                    const activityDiv = document.querySelector('.activity');
+                    const contentDiv = document.querySelector('.content');
+                    const arrowDiv = document.getElementById('arrow');
+
+                    activityDiv.addEventListener('click', () => {
+                        contentDiv.style.display = 'block';
+                        arrowDiv.style.display = 'block';
+                        document.querySelector('.activity').style.animation = 'none';
+
+                        setTimeout(function(){
+                        var divs = document.getElementsByClassName('user');
+                        for (var i = 0; i < 1; i++) {
+                            divs[i].style.display = 'flex';
+                            divs[i].style.background = '#edf3fc';
+                        }
+                        }, 2500);
+                    });
+
+                    const buttons = document.querySelectorAll('.close');
+
+                    buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+
+                    const parentNode = button.closest('.user');
+                    const parentClass = 'user';
+
+                        if (parentNode.classList.contains(parentClass)) {
+                            parentNode.style.height = `${parentNode.offsetHeight}px`;
+                            parentNode.style.transitionProperty = 'height, margin, padding';
+                            parentNode.style.transitionDuration = '0.5s'; 
+                            parentNode.style.overflow = 'hidden';
+                            parentNode.style.height = 0;
+                            parentNode.style.paddingTop = 0;
+                            parentNode.style.paddingBottom = 0;
+                            parentNode.style.marginTop = 0;
+                            parentNode.style.marginBottom = 0;
+                            parentNode.style.opacity = 0;
+                            setTimeout(() => {
+
+                                parentNode.style.display = 'none';
+                                parentNode.remove();
+                            }, 500);
+
+                            const userDivs = document.querySelectorAll('.user').length - 1;
+                            
+                            if(userDivs === 0) {
+                                document.querySelector('.clean').style.display = 'block';
+                                document.querySelector('.activity').style.animation = 'none';
+                                document.querySelector('button').remove();
+                            }
+                            else {
+                            document.querySelector('.clean').style.display = 'none';
+                            //document.querySelector('.activity').style.animation = 'dingding 0.9s linear infinite';
+                            }
+                        }
+                        });
+                    });
+                </script>
                 <br>
                 <button>View All</button>
            </div>
